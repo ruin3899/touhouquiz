@@ -1,0 +1,6 @@
+# すべてのテキストファイルをCRLFに変換する
+* text=auto
+
+# HTMLファイルとCSSファイルを特定してLFにする
+* .htmltext eol=lf
+* .css text eol=lf

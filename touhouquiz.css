@@ -1,0 +1,179 @@
+.m-plus-rounded-1c-regular {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+.hide {
+  display: none;
+}
+main {
+  display: flex;
+}
+
+header {
+  background-color: red;
+  color: white;
+  width: 100%;
+}
+
+main {
+  margin: auto;
+}
+
+footer {
+  width: 100%;
+}
+@media screen and (min-width: 601px) {
+  body {
+    font-size: 1.2em;
+  }
+
+
+
+
+
+  #quiz_area {
+    display: block;
+
+    align-items: center;
+    margin: auto;
+    width: 60%;
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  input[type="radio"]+label {
+    display: grid;
+    padding: 10px;
+    border: 1px solid #000;
+    margin: 0;
+    cursor: pointer;
+    width: calc(100% - 21.6px);
+  }
+
+  input[type="radio"]+label:hover {
+    background-color: rgba(255, 255, 0, 0.201);
+  }
+
+  input[type="radio"]:checked+label {
+    background-color: yellow;
+  }
+
+  input[type="radio"]:checked.correct+label {
+    background-color: #00ff00;
+  }
+
+  input[type="radio"]:checked.incorrect+label {
+    background-color: red;
+  }
+
+  #button_area {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin: auto;
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
+
+  button:hover {
+    background-color: darkred;
+  }
+  #result {
+    margin: auto;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 1em;
+  }
+
+  #quiz_area {
+    display: block;
+    align-items: center;
+    margin: auto;
+    width: 90%;
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
+
+  input[type="radio"]+label {
+    display: grid;
+    padding: 10px;
+    border: 1px solid #000;
+    margin: 0;
+    cursor: pointer;
+    width: calc(100% - 21.6px);
+  }
+
+  input[type="radio"]+label:hover {
+    background-color: rgba(255, 255, 0, 0.201);
+  }
+
+  input[type="radio"]:checked+label {
+    background-color: yellow;
+  }
+
+  input[type="radio"]:checked.correct+label {
+    background-color: #00ff00;
+  }
+
+  input[type="radio"]:checked.incorrect+label {
+    background-color: red;
+  }
+
+  #button_area {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: calc(100% - 10px);
+    margin-left: auto;
+    margin-right: 5px;
+    margin-top: auto;
+    margin-bottom: 5px;
+  }
+  #resetButton {
+    margin-right: 0;
+  }
+  #result{
+    margin: auto;
+    width: 100%;
+  }
+}
+li{
+  display: list-item;
+  list-style-type: disc;
+}
