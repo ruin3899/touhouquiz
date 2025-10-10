@@ -12,7 +12,6 @@ const resetButton = document.getElementById('resetButton');
 const resultButton = document.getElementById('resultButton');
 const openButton = document.getElementById('openButton');
 const closeButton = document.getElementById('closeButton');
-const toggleButton = document.getElementById('modeToggle');
 
 //問題リスト
 const question_list = [
@@ -114,7 +113,6 @@ let wrong_count = 0;
 let question_count = 0;
 let question_count_max = question_list.length;
 let resultMode = true;
-let scoreAttack = false;
 
 //ラジオボタンの選択肢を取得
 window.addEventListener('DOMContentLoaded', function () {
@@ -146,9 +144,6 @@ function answerCheck() {
         input_answers[selectedans - 1].classList.add("correct");
         correct_count++;
     } else {
-        if (scoreAttack) {
-            showResult()
-        }
         result.innerText = `不正解！正解は${correctans}番です！`
         input_answers[selectedans - 1].classList.add("incorrect");
         wrong_count++;
@@ -181,11 +176,7 @@ function startQuiz() {
     result.innerText = "";
     button.innerText = "答え合わせ";
     resultButton.classList.add("hide");
-    if(scoreAttack) {
-        question_num = 0;
-    } else {
     question_num = Math.floor(Math.random() * question_list.length);
-    }
     question.innerHTML = question_list[question_num];
     label1.innerText = answer_list[question_num][0];
     label2.innerText = answer_list[question_num][1];
@@ -201,9 +192,6 @@ function resetQuiz() {
 }
 //結果ボタンを押したときの処理
 function showResult() {
-    if (scoreAttack) {
-        result.innerText = `${question_count-1}問正解！`
-    }
     let correctratio = Math.round(correct_count / (question_count) * 100);
     result.innerText = `正解数：${correct_count}問、不正解数：${wrong_count}問、正答率：${correctratio}%`;
     question_area.classList.add("hide");
@@ -231,14 +219,3 @@ openButton.addEventListener('click', function(){
 closeButton.addEventListener('click', function(){
     tips.close();
 });
-
-toggleButton.addEventListener('click', function(){
-    if (scoreAttack) {
-        toggleButton.innerText='通常モード';
-        scoreAttack = false;
-    }
-    else {
-        toggleButton.innerText='完全無欠モード';
-        scoreAttack = true;
-    }
-})
