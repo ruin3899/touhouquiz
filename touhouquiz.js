@@ -375,5 +375,7 @@ function specialMode() {
     const button = document.querySelector('button');
     button.style.backgroundColor = 'yellow';
     resultButton.disabled = true;
+    resultButton.style.cursor = not-allowed;
+    resultButton.classList.add('hide');
     startQuiz();
 }
