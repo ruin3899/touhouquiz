@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="m-plus-rounded-1c-regular" onload="startQuiz()">
+<body class="m-plus-rounded-1c-regular">
     <dialog id="tips" style="margin: auto; background-color: rgb(255, 255, 136); color: black; border: solid 1px black; border-radius: 10px;">
         <h2>遊び方</h2>
         <ul>
@@ -21,8 +21,9 @@
             <li>答えだと思う選択肢を選んで、「答え合わせ」を押すと答え合わせできます。</li>
             <li>答え合わせ画面では「次の問題」を押せば次の問題に進み、「結果」を押せばゲームを終了してゲーム結果を閲覧できます。用意されている問題をすべて解いていた場合は「次の問題」が「結果発表」になります。</li>
             <li>「リセット」ボタンを押せばゲームがリセットされます。</li>
+            <li>満身創痍モードは問題の順番は固定ですが、1度間違えると即終了です。</li>
         </ul>
-        <b>このゲームは上海アリス幻樂団作成の「東方Project」の2次創作です。</b>
+        <b>このゲームは上海アリス幻樂団様作成の「東方Project」の2次創作です。</b>
         <button id="closeButton">閉じる</button>
     </dialog>
     <header>
@@ -35,7 +36,11 @@
         <div id="left_area">
             <img src="" alt="">
         </div>
-        <div id="quiz_area">
+        <div id="modeSelect">
+            <button style="width: auto; background-color: yellow; color: black;" onclick="normalMode()">ノーマルモード</button>
+            <button style="width: auto; background-color: yellow; color: black;" onclick="specialMode()">満身創痍モード</button>
+        </div>
+        <div id="quiz_area" class="hide">
             <div id="question_area">
                 <h3 style="text-align: center;" id="question_ber">
 

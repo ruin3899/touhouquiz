@@ -1,6 +1,7 @@
 const question = document.getElementById('question');
 const question_ber = document.getElementById('question_ber');
 const question_area = document.getElementById('question_area');
+const modeSelect = document.getElementById('modeSelect');
 const button_area = document.getElementById('button_area');
 const label1 = document.getElementById('label1');
 const label2 = document.getElementById('label2');
@@ -12,6 +13,8 @@ const resetButton = document.getElementById('resetButton');
 const resultButton = document.getElementById('resultButton');
 const openButton = document.getElementById('openButton');
 const closeButton = document.getElementById('closeButton');
+let special;
+let badEnd = false;
 
 //問題リスト
 const question_list = [
@@ -122,7 +125,7 @@ const answer_list = [
     ['博麗神社', '八坂神社', '守矢神社', '熊野神社'],
     ['バリアが出る', '敵が消える', '敵弾が消える', 'パワーが増える'],
     ['0.1', '0.5', '1', '1.5'],
-    
+
     ['爾子田里乃', '丁礼田舞', '摩多羅隠岐奈', '矢田寺成美'],
     ['土用', '春', '夏', '冬'],
     ['ゴミ', 'ネタバレ', 'コメディ', '土壌'],
@@ -184,7 +187,7 @@ const explanation_list = [
     '古明地こいしです。',
     'ルナサが長女です。',
     '鬼って書いてますが鬼じゃないです。',
-    
+
     '高麗野あうんです。天空璋3面より。',
     'はたてだけが烏天狗です。ちなみに文も烏天狗です。',
     '飯綱丸龍だけが大天狗です。',
@@ -195,7 +198,7 @@ const explanation_list = [
     '守矢神社です。',
     'バリア、つまり光学迷彩を張ります。',
     '1消費して、0.5帰ってきます。',
-    
+
     '矢田寺成美です。',
     '土用です。土用の丑の日の土用です。季節の変わり目。',
     'ネタバレって意味です。ちゃんというと、台無しにすること。',
@@ -248,15 +251,21 @@ function answerCheck() {
     answer_list.splice(question_num, 1);
     correct_answer_list.splice(question_num, 1);
     explanation_list.splice(question_num, 1);
-    
+
     if (selectedans === correctans) {
         result.innerText = `正解！${explanation}`;
         input_answers[selectedans - 1].classList.add("correct");
         correct_count++;
     } else {
-        result.innerText = `不正解！正解は${correctans}番です！`
-        input_answers[selectedans - 1].classList.add("incorrect");
-        wrong_count++;
+        if (special) {
+            badEnd = true;
+            showResult();
+        }
+        else {
+            result.innerText = `不正解！正解は${correctans}番です！`
+            input_answers[selectedans - 1].classList.add("incorrect");
+            wrong_count++;
+        }
     }
     resultMode = false;
     if (question_count >= question_count_max) {
@@ -282,11 +291,15 @@ function startQuiz() {
         element.classList.remove("correct");
         element.classList.remove("incorrect");
         element.disabled = false;
-      }
+    }
     result.innerText = "";
     button.innerText = "答え合わせ";
     resultButton.classList.add("hide");
-    question_num = Math.floor(Math.random() * question_list.length);
+    if (special) {
+        question_num = 0;
+    } else {
+        question_num = Math.floor(Math.random() * question_list.length);
+    }
     question.innerHTML = question_list[question_num];
     label1.innerText = answer_list[question_num][0];
     label2.innerText = answer_list[question_num][1];
@@ -302,11 +315,21 @@ function resetQuiz() {
 }
 //結果ボタンを押したときの処理
 function showResult() {
-    let correctratio = Math.round(correct_count / (question_count) * 100);
-    result.innerText = `正解数：${correct_count}問、不正解数：${wrong_count}問、正答率：${correctratio}%`;
-    question_area.classList.add("hide");
-    button.classList.add("hide");
-    resultButton.classList.add("hide");
+    if (special) {
+        if (badEnd) {
+            result.innerText = `残念！最後の問題の答えは${correctans}でした。
+            解説は「${explanation}」です。あなたは${question_count - 1}問正解しました！
+            また挑戦してね！`
+        } else {
+            result.innerText = `全問正解おめでとう！`
+        }
+    } else {
+        let correctratio = Math.round(correct_count / (question_count) * 100);
+        result.innerText = `正解数：${correct_count}問、不正解数：${wrong_count}問、正答率：${correctratio}%`;
+    }
+        question_area.classList.add("hide");
+        button.classList.add("hide");
+        resultButton.classList.add("hide");
 }
 //一番左のボタンの処理
 function buttonFunction() {
@@ -322,10 +345,27 @@ function buttonFunction() {
         }
     }
 }
-openButton.addEventListener('click', function(){
+openButton.addEventListener('click', function () {
     tips.showModal();
 });
 
-closeButton.addEventListener('click', function(){
+closeButton.addEventListener('click', function () {
     tips.close();
 });
+
+// モード選択
+function normalMode() {
+    special = false;
+    modeSelect.classList.add('hide');
+    question_area.classList.remove('hide');
+    startQuiz();
+}
+
+function specialMode() {
+    special = true;
+    const header = document.querySelector(header);
+    header.style.backgroundColor = yellow;
+    modeSelect.classList.add('hide');
+    question_area.classList.remove('hide');
+    startQuiz();
+}
