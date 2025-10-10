@@ -1,5 +1,6 @@
 const question = document.getElementById('question');
 const question_ber = document.getElementById('question_ber');
+const quiz_area = document.getElementById('quiz_area');
 const question_area = document.getElementById('question_area');
 const modeSelect = document.getElementById('modeSelect');
 const button_area = document.getElementById('button_area');
@@ -357,7 +358,7 @@ closeButton.addEventListener('click', function () {
 function normalMode() {
     special = false;
     modeSelect.classList.add('hide');
-    question_area.classList.remove('hide');
+    quiz_area.classList.remove('hide');
     startQuiz();
 }
 
@@ -366,6 +367,6 @@ function specialMode() {
     const header = document.querySelector(header);
     header.style.backgroundColor = yellow;
     modeSelect.classList.add('hide');
-    question_area.classList.remove('hide');
+    quiz_area.classList.remove('hide');
     startQuiz();
 }
