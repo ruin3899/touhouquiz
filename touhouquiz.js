@@ -372,5 +372,7 @@ function specialMode() {
     openButton.style.color = 'white';
     modeSelect.classList.add('hide');
     quiz_area.classList.remove('hide');
+    const button = document.querySelector('button');
+    button.style.backgroundColor = 'yellow';
     startQuiz();
 }
