@@ -366,7 +366,9 @@ function specialMode() {
     special = true;
     const header = document.querySelector('header');
     header.style.backgroundColor = 'yellow';
+    header.style.color = 'black';
     openButton.style.backgroundColor = 'red';
+    openButton.style.color = 'white';
     modeSelect.classList.add('hide');
     quiz_area.classList.remove('hide');
     startQuiz();
