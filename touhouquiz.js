@@ -364,7 +364,7 @@ function normalMode() {
 
 function specialMode() {
     special = true;
-    const header = document.querySelector(header);
+    const header = document.querySelector('header');
     header.style.backgroundColor = yellow;
     modeSelect.classList.add('hide');
     quiz_area.classList.remove('hide');
