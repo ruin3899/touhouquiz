@@ -173,6 +173,10 @@ footer {
     width: 100%;
   }
 }
+/* ID セレクタが優先されるので、#quiz_area.hide を明示して非表示にする */
+#quiz_area.hide {
+  display: none;
+}
 li{
   display: list-item;
   list-style-type: disc;

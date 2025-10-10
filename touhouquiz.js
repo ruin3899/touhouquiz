@@ -261,6 +261,7 @@ function answerCheck() {
         if (special) {
             badEnd = true;
             showResult();
+            return;
         }
         else {
             result.innerText = `不正解！正解は${correctans}番です！`
