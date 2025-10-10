@@ -181,3 +181,6 @@ li{
   display: list-item;
   list-style-type: disc;
 }
+#modeSelect button {
+  font-size: medium;
+}
