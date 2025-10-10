@@ -374,5 +374,6 @@ function specialMode() {
     quiz_area.classList.remove('hide');
     const button = document.querySelector('button');
     button.style.backgroundColor = 'yellow';
+    resultButton.classList.add = 'hide';
     startQuiz();
 }
