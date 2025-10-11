@@ -258,6 +258,11 @@ function answerCheck() {
         input_answers[selectedans - 1].classList.add("correct");
         correct_count++;
     } else {
+<<<<<<< HEAD
+        result.innerText = `不正解！正解は${correctans}番です！${explanation}`
+        input_answers[selectedans - 1].classList.add("incorrect");
+        wrong_count++;
+=======
         if (special) {
             badEnd = true;
             showResult();
@@ -268,6 +273,7 @@ function answerCheck() {
             input_answers[selectedans - 1].classList.add("incorrect");
             wrong_count++;
         }
+>>>>>>> 20186f8ba99c8f1a5530cfb0aa6cfbd802e30802
     }
     resultMode = false;
     if (question_count >= question_count_max) {
