@@ -260,7 +260,6 @@ function answerCheck() {
     } else {
         result.innerText = `不正解！正解は${correctans}番です！${explanation}`
         input_answers[selectedans - 1].classList.add("incorrect");
-        wrong_count++;
         if (special) {
             badEnd = true;
             showResult();
